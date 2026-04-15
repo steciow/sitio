@@ -1,1143 +1,960 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV Profesional - Diagrama de Gantt</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="CV profesional y portfolio de Ulises Steciow, especialista en análisis de datos, Power BI y control de gestión.">
+    <title>Ulises Steciow — BI & Economía</title>
+    <!-- ℹ️ Favicon: el archivo loguito.png debe estar en la misma carpeta que este HTML -->
+    <link rel="icon" type="image/png" href="loguito.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #e74c3c;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
-            --text: #333;
-            --text-light: #777;
-            --shadow: 0 5px 15px rgba(0,0,0,0.1);
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            background-color: #f9f9f9;
-            scroll-behavior: smooth;
-        }
-
-        a {
-            text-decoration: none;
-            color: var(--secondary);
-            transition: var(--transition);
-        }
-
-        a:hover {
-            color: var(--accent);
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            background: var(--secondary);
-            color: white;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-            color: white;
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--secondary);
-            color: var(--secondary);
-        }
-
-        .btn-outline:hover {
-            background: var(--secondary);
-            color: white;
-        }
-
-        section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--secondary);
-        }
-
-        /* Header y navegación */
-        header {
-            background: white;
-            box-shadow: var(--shadow);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .logo span {
-            color: var(--secondary);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 30px;
-        }
-
-        .nav-links a {
-            color: var(--dark);
-            font-weight: 600;
-        }
-
-        .nav-links a:hover {
-            color: var(--secondary);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding-top: 150px;
-            padding-bottom: 80px;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        }
-
-        .hero-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .hero-text {
-            flex: 1;
-            padding-right: 30px;
-        }
-
-        .hero-text h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-
-        .hero-text p {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            margin-bottom: 30px;
-        }
-
-        .hero-image {
-            flex: 1;
-            text-align: center;
-        }
-
-        .hero-image img {
-            max-width: 100%;
-            border-radius: 50%;
-            border: 5px solid white;
-            box-shadow: var(--shadow);
-        }
-
-        /* Sobre mí */
-        .about {
-            background: white;
-        }
-
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-        }
-
-        .about-text {
-            flex: 2;
-        }
-
-        .about-text h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-
-        .about-text p {
-            margin-bottom: 15px;
-            color: var(--text-light);
-        }
-
-        .about-info {
-            flex: 1;
-        }
-
-        .info-item {
-            margin-bottom: 15px;
-        }
-
-        .info-item h4 {
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-
-        .info-item p {
-            color: var(--text-light);
-        }
-
-        /* Experiencia - Diagrama de Gantt */
-        .experience {
-            background: #f8f9fa;
-        }
-
-        .gantt-container {
-            position: relative;
-            margin: 40px 0;
-            padding: 30px 0;
-        }
-
-        .gantt-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 40px;
-            position: relative;
-        }
-
-        .gantt-years {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            position: absolute;
-            bottom: -40px;
-            left: 0;
-        }
-
-        .gantt-year {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            position: relative;
-        }
-
-        .gantt-year::after {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            width: 2px;
-            height: 10px;
-            background: var(--text-light);
-            transform: translateX(-50%);
-        }
-
-        .gantt-grid {
-            position: relative;
-            height: 400px;
-            border-left: 2px solid var(--secondary);
-            border-bottom: 2px solid var(--secondary);
-        }
-
-        .gantt-horizontal-lines {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 1;
-        }
-
-        .gantt-h-line {
-            position: absolute;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: rgba(0,0,0,0.1);
-        }
-
-        .gantt-vertical-lines {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 1;
-        }
-
-        .gantt-v-line {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 1px;
-            background: rgba(0,0,0,0.1);
-        }
-
-        .gantt-bars {
-            position: relative;
-            z-index: 2;
-            height: 100%;
-        }
-
-        .gantt-bar {
-            position: absolute;
-            background: var(--secondary);
-            border-radius: 4px;
-            padding: 12px;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .gantt-bar:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-
-        .gantt-bar-title {
-            font-size: 1rem;
-            margin-bottom: 5px;
-        }
-
-        .gantt-bar-period {
-            font-size: 0.8rem;
-            opacity: 0.9;
-        }
-
-        .gantt-bar-0 { background: #3498db; }
-        .gantt-bar-1 { background: #2ecc71; }
-        .gantt-bar-2 { background: #e74c3c; }
-        .gantt-bar-3 { background: #f39c12; }
-        .gantt-bar-4 { background: #9b59b6; }
-
-        /* Formación - Línea de tiempo horizontal */
-        .education {
-            background: white;
-            overflow: hidden;
-        }
-
-        .horizontal-timeline {
-            position: relative;
-            height: 300px;
-            margin: 60px 0;
-        }
-
-        .timeline-line {
-            position: absolute;
-            top: 50%;
-            left: 50px;
-            right: 50px;
-            height: 4px;
-            background: var(--secondary);
-            transform: translateY(-50%);
-        }
-
-        .timeline-items {
-            display: flex;
-            justify-content: space-between;
-            position: relative;
-            height: 100%;
-        }
-
-        .timeline-item {
-            position: absolute;
-            width: 220px;
-            text-align: center;
-            transition: var(--transition);
-        }
-
-        .timeline-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .timeline-point {
-            width: 20px;
-            height: 20px;
-            background: var(--secondary);
-            border: 4px solid white;
-            border-radius: 50%;
-            margin: 0 auto 15px;
-            position: relative;
-            z-index: 2;
-            box-shadow: 0 0 0 3px var(--secondary);
-        }
-
-        .timeline-content {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .timeline-content:hover {
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-
-        .timeline-date {
-            color: var(--secondary);
-            font-weight: bold;
-            margin-bottom: 10px;
-            display: block;
-            font-size: 1.1rem;
-        }
-
-        .timeline-title {
-            color: var(--primary);
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-
-        .timeline-desc {
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-
-        /* Posicionamiento alternado arriba/abajo */
-        .timeline-item:nth-child(odd) {
-            top: 0;
-        }
-
-        .timeline-item:nth-child(even) {
-            bottom: 0;
-        }
-
-        /* Habilidades */
-        .skills {
-            background: #f8f9fa;
-        }
-
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .skill-category {
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-        }
-
-        .skill-category h3 {
-            color: var(--primary);
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .skill-item {
-            margin-bottom: 15px;
-        }
-
-        .skill-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-        }
-
-        .skill-bar {
-            height: 10px;
-            background: #e0e0e0;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .skill-progress {
-            height: 100%;
-            background: var(--secondary);
-            border-radius: 10px;
-            position: relative;
-            transition: width 1s ease;
-        }
-
-        /* Proyectos */
-        .projects {
-            background: white;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-
-        .project-img {
-            height: 200px;
-            background-color: #ddd;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .project-info {
-            padding: 20px;
-        }
-
-        .project-info h3 {
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .project-info p {
-            color: var(--text-light);
-            margin-bottom: 15px;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            margin-bottom: 15px;
-        }
-
-        .project-tag {
-            background: #e0e0e0;
-            color: var(--text);
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin-right: 8px;
-            margin-bottom: 8px;
-        }
-
-        /* Contacto */
-        .contact {
-            background: #f8f9fa;
-        }
-
-        .contact-container {
-            display: flex;
-            gap: 50px;
-        }
-
-        .contact-info {
-            flex: 1;
-        }
-
-        .contact-info h3 {
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        .contact-details {
-            margin-bottom: 30px;
-        }
-
-        .contact-details p {
-            margin-bottom: 10px;
-            color: var(--text-light);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .social-links a {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            background: var(--secondary);
-            color: white;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 40px;
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            background: var(--primary);
-            transform: translateY(-5px);
-        }
-
-        .contact-form {
-            flex: 2;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-family: inherit;
-            font-size: 1rem;
-        }
-
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--primary);
-            color: white;
-            padding: 40px 0;
-            text-align: center;
-        }
-
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .back-to-top {
-            margin-bottom: 20px;
-        }
-
-        .copyright {
-            color: rgba(255,255,255,0.7);
-        }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .hero-content, .about-content, .contact-container {
-                flex-direction: column;
-            }
-            
-            .hero-text, .hero-image {
-                padding: 0;
-                text-align: center;
-            }
-            
-            .hero-text {
-                margin-bottom: 40px;
-            }
-            
-            .horizontal-timeline {
-                height: auto;
-                margin: 40px 0;
-            }
-            
-            .timeline-items {
-                flex-direction: column;
-            }
-            
-            .timeline-item {
-                position: relative;
-                width: 100%;
-                margin-bottom: 40px;
-                left: 0 !important;
-                top: auto !important;
-                bottom: auto !important;
-            }
-            
-            .timeline-line {
-                display: none;
-            }
-            
-            .gantt-container {
-                overflow-x: auto;
-            }
-
-            .gantt-grid {
-                width: 800px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-            
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
+            --primary:      #09414B;
+            --primary-dark: #062E35;
+            --secondary:    #3BB58F;
+            --terciary:     #145038;
+            --cuarteli:     #12687C;
+            --accent:       #A0DEFF;
+            --light:        #C5FFF5;
+            --dark:         #001D0D;
+            --bg-section:   #ffffff;
+            --bg-alt:       #f4f7f6;
+            --text:         #1a1a1a;
+            --text-muted:   #5a6a63;
+            --shadow-sm:    0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md:    0 6px 24px rgba(0,0,0,0.12);
+            --shadow-lg:    0 16px 48px rgba(0,0,0,0.18);
+            --radius-sm:    6px;
+            --radius-md:    12px;
+            --radius-lg:    20px;
+            --transition:   all 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+        html{scroll-behavior:smooth;}
+        body{font-family:'Outfit',sans-serif;font-weight:400;line-height:1.65;color:var(--text);background:#041A12;}
+        a{text-decoration:none;color:inherit;}
+        img{display:block;max-width:100%;}
+        .container{width:92%;max-width:1100px;margin:0 auto;}
+
+        /* Botones */
+        .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:var(--radius-sm);font-family:inherit;font-size:.9rem;font-weight:600;cursor:pointer;border:none;transition:var(--transition);}
+        .btn-primary{background:var(--secondary);color:#fff;}
+        .btn-primary:hover{background:#2ea07c;transform:translateY(-2px);box-shadow:0 6px 16px rgba(59,181,143,.35);}
+        .btn-outline{background:transparent;border:1.5px solid rgba(255,255,255,.5);color:#fff;}
+        .btn-outline:hover{background:rgba(255,255,255,.1);border-color:#fff;transform:translateY(-2px);}
+
+        /* Cabecera de sección */
+        .section-header{display:flex;align-items:center;gap:14px;margin-bottom:40px;}
+        .section-header .icon-circle{width:46px;height:46px;border-radius:50%;background:var(--secondary);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;flex-shrink:0;}
+        .section-header h2{font-size:1.9rem;font-weight:700;color:var(--primary);}
+
+        /* Animación reveal */
+        .reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease;}
+        .reveal.visible{opacity:1;transform:translateY(0);}
+        .reveal-delay-1{transition-delay:.1s;}
+        .reveal-delay-2{transition-delay:.2s;}
+        .reveal-delay-3{transition-delay:.3s;}
+
+        /* ── HEADER ── */
+        header{position:fixed;top:0;width:100%;z-index:100;background:rgba(9,65,75,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08);}
+        nav{display:flex;align-items:center;justify-content:space-between;height:64px;}
+        .nav-logo{font-size:1.15rem;font-weight:700;color:#fff;letter-spacing:-.3px;}
+        .nav-logo span{color:var(--secondary);}
+        .logo img{width:52px;vertical-align:top;}
+        .nav-links{display:flex;list-style:none;gap:4px;}
+        .nav-links a{color:rgba(255,255,255,.8);font-size:.88rem;font-weight:500;padding:6px 12px;border-radius:var(--radius-sm);transition:var(--transition);}
+        .nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,.1);}
+        .nav-links a.active{color:var(--secondary)!important;background:rgba(59,181,143,.12);}
+        .nav-toggle{display:none;background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer;}
+
+        /* ── HERO ──
+           Los ::before y ::after son pentágonos decorativos en el fondo.
+           clip-path: polygon(top, right, bottom-right, bottom-left, left)
+           Polígono pentagonal regular: 5 vértices calculados desde el centro.
+        */
+        .hero{min-height:100vh;display:flex;align-items:center;background:linear-gradient(135deg,#062E35 0%,#12687C 60%,#1a8a6a 100%);padding:100px 0 60px;position:relative;overflow:hidden;}
+
+        /* Pentágono grande — esquina superior derecha */
+        .hero::before{
+            content:'';position:absolute;
+            top:-140px;right:-130px;
+            width:520px;height:520px;
+            clip-path:polygon(50% 0%, 97.55% 34.55%, 79.4% 90.45%, 20.6% 90.45%, 2.45% 34.55%);
+            background:rgba(59,181,143,.10);
+            pointer-events:none;
+            transform:rotate(15deg);
+        }
+        /* Pentágono mediano — esquina inferior izquierda */
+        .hero::after{
+            content:'';position:absolute;
+            bottom:-100px;left:-100px;
+            width:380px;height:380px;
+            clip-path:polygon(50% 0%, 97.55% 34.55%, 79.4% 90.45%, 20.6% 90.45%, 2.45% 34.55%);
+            background:rgba(160,222,255,.07);
+            pointer-events:none;
+            transform:rotate(-20deg);
+        }
+        /* Pentágonos adicionales — generados en HTML como divs decorativos */
+        .hero-penta{position:absolute;pointer-events:none;clip-path:polygon(50% 0%, 97.55% 34.55%, 79.4% 90.45%, 20.6% 90.45%, 2.45% 34.55%);}
+
+        .hero-inner{display:flex;align-items:center;gap:60px;flex-wrap:wrap;position:relative;z-index:1;}
+        .hero-text{flex:1;min-width:280px;}
+        .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(59,181,143,.2);border:1px solid rgba(59,181,143,.4);color:var(--light);font-size:.82rem;font-weight:600;letter-spacing:.05em;padding:5px 14px;border-radius:100px;margin-bottom:18px;text-transform:uppercase;}
+        .hero-text h1{font-size:clamp(2.2rem,5vw,3.4rem);font-weight:700;color:#fff;line-height:1.15;margin-bottom:12px;}
+        .hero-role{color:var(--secondary);margin-bottom:18px;}
+        .hero-desc{color:rgba(255,255,255,.8);font-size:1.05rem;max-width:480px;margin-bottom:8px;}
+        .hero-location{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.55);font-size:.88rem;margin-bottom:28px;}
+        .hero-buttons{display:flex;flex-wrap:wrap;gap:12px;}
+
+        /* Foto con logo superpuesto — inferior IZQUIERDO */
+        .hero-photo-wrap{flex-shrink:0;position:relative;display:inline-block;}
+        .hero-photo-ring{width:240px;height:240px;border-radius:50%;background:linear-gradient(135deg,var(--secondary),var(--accent));padding:4px;box-shadow:0 0 40px rgba(59,181,143,.35);}
+        .hero-photo-ring img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:3px solid var(--primary-dark);}
+
+        /* Logo overlay — inferior izquierdo */
+        .logo-overlay{
+            position:absolute;
+            bottom:4px;
+            left:8px;       /* inferior izquierdo */
+            width:70px;height:70px;
+            border-radius:50%;
+            overflow:hidden;
+            box-shadow:0 3px 12px rgba(0,0,0,0.35);
+            border:2px solid rgba(255,255,255,0.3);
+        }
+        .logo-overlay img{width:100%;height:100%;object-fit:cover;display:block;}
+
+        .hero-stats{display:flex;gap:16px;margin-top:20px;justify-content:center;}
+        .hero-stat{text-align:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-md);padding:12px 16px;min-width:80px;}
+        .hero-stat .num{font-size:1.3rem;font-weight:700;color:var(--secondary);}
+        .hero-stat .lbl{font-size:.72rem;color:rgba(255,255,255,.6);margin-top:2px;}
+
+        /* ── SOBRE MÍ ── */
+        .about{background:var(--bg-section);padding:80px 0;}
+        .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+        .about-text p{color:var(--text-muted);margin-bottom:14px;font-size:1rem;}
+        .about-text p:last-child{margin-bottom:0;}
+        .skills-panel{background:var(--primary);border-radius:var(--radius-lg);padding:28px;color:#fff;}
+        .skills-panel h3{font-size:.85rem;font-weight:600;color:var(--secondary);letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+        .chips-wrap{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;}
+        .chip-dark{display:inline-block;padding:6px 14px;border-radius:100px;font-size:.82rem;font-weight:500;background:rgba(59,181,143,.18);border:1px solid rgba(59,181,143,.35);color:var(--light);white-space:nowrap;transition:var(--transition);}
+        .chip-dark:hover{background:rgba(59,181,143,.35);}
+        .chip-lang{background:rgba(160,222,255,.15);border-color:rgba(160,222,255,.3);color:var(--accent);}
+        .chip-lang:hover{background:rgba(160,222,255,.3);}
+
+        /* ── GANTT ── */
+        .experience{background:var(--bg-alt);padding:80px 0;}
+        .gantt-wrapper{background:#fff;border-radius:var(--radius-lg);padding:28px 28px 24px;box-shadow:var(--shadow-sm);overflow-x:auto;}
+
+        /* Leyenda — ARRIBA del gráfico */
+        .gantt-legend{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid #e0ebe6;}
+        .legend-item{display:flex;align-items:center;gap:7px;font-size:.78rem;color:var(--text-muted);}
+        .legend-dot{width:11px;height:11px;border-radius:2px;flex-shrink:0;}
+
+        /* Filas y barras */
+        .gantt-rows{min-width:560px;}
+        .gantt-category-label{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);padding:12px 0 7px 0;display:flex;align-items:center;gap:12px;}
+        .gantt-category-label::after{content:'';flex:1;height:1px;background:#e0ebe6;}
+        .gantt-row{display:flex;align-items:center;margin-bottom:8px;}
+        .gantt-row:last-child{margin-bottom:0;}
+        .gantt-label{width:170px;min-width:170px;padding-right:14px;font-size:.8rem;font-weight:600;color:var(--primary);line-height:1.3;}
+        .gantt-label small{display:block;font-weight:400;font-size:.7rem;color:var(--text-muted);margin-top:1px;}
+        .gantt-track{flex:1;height:32px;background:#f0f4f2;border-radius:5px;position:relative;}
+        .gantt-bar{
+            position:absolute;top:2px;height:28px;border-radius:4px;
+            display:flex;align-items:center;padding:0 9px;
+            font-size:.72rem;font-weight:600;color:#fff;
+            white-space:nowrap;cursor:pointer;overflow:hidden;
+            transition:filter .2s,transform .15s;
+        }
+        .gantt-bar:hover{filter:brightness(1.14);transform:scaleY(1.1);z-index:5;}
+
+        /* Paleta de colores sólidos por institución (6 organismos) */
+        .bc-infra-pba  {background:#09414B;}   /* Min. Infraestructura y SP · PBA */
+        .bc-corr       {background:#12687C;}   /* Corredores Viales SA */
+        .bc-obras-nac  {background:#145038;}   /* Min. Obras Públicas · Nación */
+        .bc-indep      {background:#3BB58F;}   /* Independiente */
+        .bc-jgm-pba    {background:#0d5e73;}   /* Jefatura de Gabinete · PBA */
+        .bc-jgm-nac    {background:#1d5fa8;}   /* Jefatura de Gabinete · Nación */
+
+        /* Tooltip */
+        .gantt-tooltip{display:none;position:fixed;background:var(--primary);color:#fff;padding:13px 16px;border-radius:var(--radius-md);font-size:.82rem;line-height:1.55;max-width:260px;box-shadow:var(--shadow-lg);pointer-events:none;z-index:999;border:1px solid rgba(59,181,143,.3);}
+        .gantt-tooltip.visible{display:block;}
+        .gantt-tooltip strong{color:var(--secondary);font-size:.88rem;display:block;margin-bottom:4px;}
+        .gantt-tooltip em{color:rgba(255,255,255,.55);font-size:.75rem;font-style:normal;}
+
+        /* ── FORMACIÓN — línea temporal vertical ── */
+        .education{background:var(--bg-section);padding:80px 0;}
+
+        /* Layout de dos columnas: timeline izquierda, cursos derecha */
+        .formacion-cols{display:grid;grid-template-columns:1.6fr 1fr;gap:40px;align-items:start;}
+
+        .vtimeline{position:relative;padding-left:28px;}
+        .vtimeline::before{content:'';position:absolute;left:0;top:8px;bottom:0;width:2px;background:linear-gradient(to bottom,var(--secondary),rgba(59,181,143,.1));}
+        .vtimeline-item{position:relative;padding-bottom:20px;}
+        .vtimeline-item:last-child{padding-bottom:0;}
+        .vtimeline-dot{position:absolute;left:-33px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--secondary);border:3px solid var(--bg-section);box-shadow:0 0 0 2px var(--secondary);}
+        .vtimeline-card{background:#f8faf9;border-radius:var(--radius-md);padding:15px 20px;border-left:3px solid var(--secondary);transition:var(--transition);}
+        .vtimeline-card:hover{transform:translateX(4px);box-shadow:var(--shadow-sm);}
+        .vtimeline-year{font-size:.82rem;font-weight:700;color:var(--secondary);letter-spacing:.04em;margin-bottom:4px;}
+        .vtimeline-title{font-size:.98rem;font-weight:700;color:var(--primary);margin-bottom:2px;line-height:1.35;}
+        .vtimeline-inst{font-size:.83rem;color:var(--text-muted);margin-bottom:6px;}
+        .edu-badge{display:inline-block;font-size:.68rem;font-weight:600;padding:2px 9px;border-radius:100px;background:rgba(59,181,143,.13);color:var(--terciary);}
+        .edu-badge.pendiente{background:rgba(255,193,7,.13);color:#7a5800;}
+
+        /* Panel de cursos */
+        .cursos-panel{background:var(--primary);border-radius:var(--radius-lg);padding:24px;}
+        .cursos-panel-title{font-size:.82rem;font-weight:700;color:var(--secondary);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+        .cursos-chips{display:flex;flex-wrap:wrap;gap:7px;}
+        .curso-chip{display:inline-block;padding:5px 12px;border-radius:100px;font-size:.77rem;font-weight:500;background:rgba(59,181,143,.18);border:1px solid rgba(59,181,143,.32);color:var(--light);transition:var(--transition);}
+        .curso-chip:hover{background:rgba(59,181,143,.35);}
+
+        /* ── DOCENCIA & OTRAS ACTIVIDADES ── */
+        .docencia{background:var(--bg-alt);padding:80px 0;}
+        .docencia-cols{display:grid;grid-template-columns:1.7fr 1fr;gap:36px;align-items:start;}
+
+        /* Panel docencia (oscuro) */
+        .doc-panel{background:var(--primary);border-radius:var(--radius-lg);padding:24px;}
+        .doc-panel-title{font-size:.82rem;font-weight:700;color:var(--secondary);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+        .doc-item{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08);}
+        .doc-item:last-child{border-bottom:none;padding-bottom:0;}
+        .doc-item-name{font-size:.84rem;color:rgba(255,255,255,.9);font-weight:500;flex:1;line-height:1.4;}
+        .doc-item-name small{display:block;font-size:.72rem;color:rgba(255,255,255,.45);margin-top:2px;}
+        .doc-item-period{font-size:.74rem;font-weight:700;color:var(--secondary);white-space:nowrap;padding-top:2px;}
+
+        /* Paneles otros (claro) */
+        .otros-stack{display:flex;flex-direction:column;gap:16px;}
+        .otros-panel{background:#fff;border-radius:var(--radius-md);padding:20px;box-shadow:var(--shadow-sm);border-left:3px solid var(--secondary);}
+        .otros-panel-title{font-size:.8rem;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+        .otro-item{display:flex;align-items:flex-start;gap:9px;margin-bottom:10px;}
+        .otro-item:last-child{margin-bottom:0;}
+        .otro-dot{width:7px;height:7px;border-radius:50%;background:var(--secondary);flex-shrink:0;margin-top:5px;}
+        .otro-text{font-size:.83rem;color:var(--dark);line-height:1.45;}
+        .otro-text span{font-size:.7rem;font-weight:700;color:var(--secondary);display:block;margin-top:2px;}
+
+        /* ── CONTACTO ── */
+        .contact{background:var(--bg-alt);padding:80px 0;}
+        .contact-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:48px;align-items:start;}
+        .contact-info h3,.contact-form h3{font-size:1.2rem;font-weight:700;color:var(--primary);margin-bottom:20px;}
+        .contact-item{display:flex;align-items:center;gap:14px;margin-bottom:16px;color:var(--text-muted);font-size:.95rem;}
+        .contact-item-icon{width:40px;height:40px;border-radius:var(--radius-sm);background:var(--primary);color:var(--secondary);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+        .contact-item a{color:var(--primary);font-weight:500;transition:var(--transition);}
+        .contact-item a:hover{color:var(--secondary);}
+        .social-links{display:flex;gap:10px;margin-top:24px;}
+        .social-link{width:40px;height:40px;border-radius:var(--radius-sm);border:1.5px solid var(--primary);color:var(--primary);display:flex;align-items:center;justify-content:center;transition:var(--transition);font-size:1rem;}
+        .social-link:hover{background:var(--primary);color:var(--secondary);}
+        .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+        .form-group{margin-bottom:14px;}
+        .form-group label{display:block;font-size:.82rem;font-weight:600;color:var(--primary);margin-bottom:6px;}
+        .form-group input,.form-group textarea{width:100%;padding:11px 14px;border:1.5px solid #d0ddd8;border-radius:var(--radius-sm);font-family:inherit;font-size:.95rem;color:var(--text);background:#fff;transition:var(--transition);outline:none;}
+        .form-group input:focus,.form-group textarea:focus{border-color:var(--secondary);box-shadow:0 0 0 3px rgba(59,181,143,.15);}
+        .form-group textarea{resize:vertical;min-height:120px;}
+
+        /* ── FOOTER ── */
+        footer{background:var(--primary-dark);color:rgba(255,255,255,.6);text-align:center;padding:28px 0;font-size:.85rem;}
+        footer span{color:var(--secondary);}
+
+        /* ── RESPONSIVE ── */
+        @media(max-width:900px){
+            .about-grid,.contact-grid,.formacion-cols,.docencia-cols{grid-template-columns:1fr;}
+            .hero-inner{flex-direction:column-reverse;text-align:center;}
+            .hero-location,.hero-buttons,.hero-stats{justify-content:center;}
+        }
+        @media(max-width:640px){
+            .nav-links{display:none;flex-direction:column;position:absolute;top:64px;left:0;width:100%;background:rgba(9,65,75,.98);padding:16px;gap:4px;}
+            .nav-links.open{display:flex;}
+            .nav-toggle{display:block;}
+            .form-row{grid-template-columns:1fr;}
+            .hero-photo-ring{width:180px;height:180px;}
+            .gantt-label{width:130px;min-width:130px;font-size:.74rem;}
         }
     </style>
 </head>
 <body>
-    <!-- Header y Navegación -->
-    <header>
-        <div class="container">
-            <nav>
-                <a href="#" class="logo">Tu<span>Nombre</span></a>
-                <ul class="nav-links">
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#sobre-mi">Sobre mí</a></li>
-                    <li><a href="#experiencia">Experiencia</a></li>
-                    <li><a href="#formacion">Formación</a></li>
-                    <li><a href="#habilidades">Habilidades</a></li>
-                    <li><a href="#proyectos">Proyectos</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section id="inicio" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Hola, soy <span style="color: var(--secondary);">Tu Nombre</span></h1>
-                    <p>Soy [Tu Profesión] con [X años] de experiencia especializado/a en [tu especialidad]. Bienvenido/a a mi portfolio profesional.</p>
-                    <div class="hero-buttons">
-                        <a href="#contacto" class="btn">Contactarme</a>
-                        <a href="#" class="btn btn-outline">Descargar CV</a>
-                    </div>
+<!-- ── HEADER ── -->
+<header>
+    <div class="container">
+        <nav>
+            <a href="#" class="logo">
+                <!-- ℹ️ Si logo.png está en la misma carpeta que el HTML: -->
+                <img src="logo.png" alt="Logo personal">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre mí</a></li>
+                <li><a href="#experiencia">Experiencia</a></li>
+                <li><a href="#formacion">Formación</a></li>
+                <li><a href="#docencia">Docencia y otros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Menú"><i class="fas fa-bars"></i></button>
+        </nav>
+    </div>
+</header>
+
+<!-- ── HERO ── -->
+<section id="inicio" class="hero">
+
+    <!--
+      Pentágonos decorativos de fondo adicionales.
+      Los dos principales están en ::before y ::after (CSS).
+      Estos son extras para enriquecer el fondo.
+      Posiciones y tamaños variados para dar profundidad.
+    -->
+    <div class="hero-penta" style="width:200px;height:200px;top:20%;left:5%;background:rgba(59,181,143,.06);transform:rotate(8deg);"></div>
+    <div class="hero-penta" style="width:120px;height:120px;top:65%;right:15%;background:rgba(160,222,255,.08);transform:rotate(-12deg);"></div>
+    <div class="hero-penta" style="width:80px;height:80px;top:15%;left:38%;background:rgba(59,181,143,.05);transform:rotate(30deg);"></div>
+    <div class="hero-penta" style="width:160px;height:160px;bottom:10%;right:30%;background:rgba(9,65,75,.2);transform:rotate(-5deg);"></div>
+
+    <div class="container">
+        <div class="hero-inner">
+
+            <!-- Foto con logo superpuesto inferior izquierdo -->
+            <div class="hero-photo-wrap reveal">
+                <div class="hero-photo-ring">
+                    <!-- ℹ️ Reemplazá src con la ruta a tu foto. Ej: src="uli.JPG" -->
+                    <img src="uli.JPG" alt="Foto de Ulises Steciow">
                 </div>
-                <div class="hero-image">
-                    <img src="https://via.placeholder.com/400x400" alt="Tu Nombre">
+                <!-- Logo overlay — inferior izquierdo de la foto -->
+                <div class="logo-overlay">
+                    <!-- ℹ️ Reemplazá src con la ruta a tu logo. Ej: src="logo_uli.png" -->
+                    <img src="logo_uli.png" alt="Logo personal">
+                </div>
+            </div>
+
+            <div class="hero-text reveal reveal-delay-1">
+                <h1>Hola, soy Ulises Steciow</h1>
+                <h1 class="hero-role">Economista - Desarrollador BI</h1>
+                <h2 class="hero-role"><i class="fa-solid fa-helmet-safety"></i>&nbsp;&nbsp;<i class="fa-solid fa-microscope"></i>&nbsp;&nbsp;<i class="fa-solid fa-chart-column"></i></h2>
+                <p class="hero-desc">Me desempeño en áreas de administración, monitoreo y evaluación, disponiendo información y análisis para decisiones estratégicas.</p>
+                <p class="hero-desc">También soy estudiante de posgrado y docente. Me gusta capacitar y formar equipos.</p>
+                <div class="hero-location"><i class="fas fa-map-marker-alt"></i> MB Gonnet CP 1897, Argentina</div>
+                <div class="hero-buttons">
+                    <a href="#contacto" class="btn btn-primary"><i class="fas fa-envelope"></i> Contactarme</a>
+                    <a href="https://www.linkedin.com/in/steciowulises/" target="_blank" class="btn btn-outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://drive.google.com/file/d/1tQxlOR_b_kQqsq9-qtSHE2vAs5qeixCw/view?usp=sharing" target="_blank" class="btn btn-outline"><i class="fas fa-download"></i> Descargar CV</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ── SOBRE MÍ ── -->
+<section id="sobre-mi" class="about">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="icon-circle"><i class="fas fa-user"></i></div>
+            <h2>Sobre Mí</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-text reveal">
+                <p>Soy Lic. en Economía [UNLP] y desarrollador BI.</p>
+                <p>He desarrollado mi carrera en áreas de seguimiento y control de gestión, fortaleciendo procesos de transformación tecnológica.</p>
+                <p>Tengo experiencia en el diseño de tableros interactivos y la implementación de soluciones en Power BI y Looker, abarcando el proceso completo de ETL.</p>
+                <p>Me enfoco en desarrollar herramientas de decisión con interfaces intuitivas que presenten datos complejos de manera simple y precisa.</p>
+                <p>También he liderado capacitaciones sobre Power BI y sobre desarrollo de indicadores de gestión, para fortalecer equipos.</p>
+                <p>Cuando no estoy trabajando, me gusta nadar, correr y soy Guardavidas.</p>
+            </div>
+            <div class="skills-panel reveal reveal-delay-1">
+                <h3><i class="fa-solid fa-code"></i><i class="fas fa-tools"></i> Conocimientos</h3>
+                <div class="chips-wrap">
+                    <span class="chip-dark">Looker Studio</span>
+                    <span class="chip-dark">Power BI</span>
+                    <span class="chip-dark">Figma</span>
+                    <span class="chip-dark">SIDIF</span>
+                    <span class="chip-dark">SIGAF</span>
+                    <span class="chip-dark">SQL</span>
+                    <span class="chip-dark">Python [Numpy/Pandas]</span>
+                    <span class="chip-dark">HTML</span>
+                    <span class="chip-dark">CSS</span>
+                </div>
+                <h3><i class="fas fa-comments"></i> Idiomas</h3>
+                <div class="chips-wrap">
+                    <a href="https://cert.efset.org/5jsQUR" target="_blank" class="chip-dark chip-lang">
+                        Inglés [C2 Proficient] <i class="fas fa-external-link-alt" style="font-size:.7rem;margin-left:4px;"></i>
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Sobre Mí -->
-    <section id="sobre-mi" class="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>Sobre Mí</h2>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Hola! Soy [Tu Nombre]</h3>
-                    <p>Soy un/a [profesión] apasionado/a con [X] años de experiencia en [sector/industria]. Mi expertise se centra en [áreas de especialización].</p>
-                    <p>Me considero una persona [adjetivos que te describan] con capacidad para [habilidades blandas]. Disfruto enfrentando nuevos desafíos y siempre estoy buscando oportunidades para aprender y crecer profesionalmente.</p>
-                    <p>Cuando no estoy trabajando, me gusta [hobbies/intereses personales].</p>
-                </div>
-                <div class="about-info">
-                    <div class="info-item">
-                        <h4>Nombre:</h4>
-                        <p>Tu Nombre Completo</p>
-                    </div>
-                    <div class="info-item">
-                        <h4>Email:</h4>
-                        <p>tu.email@ejemplo.com</p>
-                    </div>
-                    <div class="info-item">
-                        <h4>Ubicación:</h4>
-                        <p>Ciudad, País</p>
-                    </div>
-                    <div class="info-item">
-                        <h4>Disponibilidad:</h4>
-                        <p>Abierto/a a oportunidades</p>
-                    </div>
-                </div>
-            </div>
+<!-- ── EXPERIENCIA — GANTT ── -->
+<section id="experiencia" class="experience">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="icon-circle"><i class="fas fa-briefcase"></i></div>
+            <h2>Experiencia</h2>
         </div>
-    </section>
 
-    <!-- Experiencia - Diagrama de Gantt -->
-    <section id="experiencia" class="experience">
-        <div class="container">
-            <div class="section-title">
-                <h2>Experiencia Laboral</h2>
+        <div class="gantt-wrapper reveal">
+
+            <!--
+              LEYENDA — arriba del gráfico
+              Cada color corresponde a un organismo.
+            -->
+            <div class="gantt-legend">
+                <div class="legend-item"><div class="legend-dot" style="background:#09414B;"></div> Min. Infraestructura y SP · PBA</div>
+                <div class="legend-item"><div class="legend-dot" style="background:#12687C;"></div> Corredores Viales SA</div>
+                <div class="legend-item"><div class="legend-dot" style="background:#145038;"></div> Min. Obras Públicas · Nación</div>
+                <div class="legend-item"><div class="legend-dot" style="background:#3BB58F;"></div> Independiente</div>
+                <div class="legend-item"><div class="legend-dot" style="background:#0d5e73;"></div> Jefatura de Gabinete · PBA</div>
+                <div class="legend-item"><div class="legend-dot" style="background:#1d5fa8;"></div> Jefatura de Gabinete · Nación</div>
             </div>
-            
-            <div class="gantt-container">
-                <div class="gantt-header">
-                    <div class="gantt-years">
-                        <span class="gantt-year">2015</span>
-                        <span class="gantt-year">2016</span>
-                        <span class="gantt-year">2017</span>
-                        <span class="gantt-year">2018</span>
-                        <span class="gantt-year">2019</span>
-                        <span class="gantt-year">2020</span>
-                        <span class="gantt-year">2021</span>
-                        <span class="gantt-year">2022</span>
-                        <span class="gantt-year">2023</span>
-                        <span class="gantt-year">2024</span>
-                    </div>
-                </div>
-                
-                <div class="gantt-grid">
-                    <div class="gantt-horizontal-lines">
-                        <div class="gantt-h-line" style="top: 20%"></div>
-                        <div class="gantt-h-line" style="top: 40%"></div>
-                        <div class="gantt-h-line" style="top: 60%"></div>
-                        <div class="gantt-h-line" style="top: 80%"></div>
-                    </div>
-                    
-                    <div class="gantt-vertical-lines">
-                        <div class="gantt-v-line" style="left: 10%"></div>
-                        <div class="gantt-v-line" style="left: 20%"></div>
-                        <div class="gantt-v-line" style="left: 30%"></div>
-                        <div class="gantt-v-line" style="left: 40%"></div>
-                        <div class="gantt-v-line" style="left: 50%"></div>
-                        <div class="gantt-v-line" style="left: 60%"></div>
-                        <div class="gantt-v-line" style="left: 70%"></div>
-                        <div class="gantt-v-line" style="left: 80%"></div>
-                        <div class="gantt-v-line" style="left: 90%"></div>
-                    </div>
-                    
-                    <div class="gantt-bars">
-                        <!-- Experiencia 1 -->
-                        <div class="gantt-bar gantt-bar-0" style="top: 15%; left: 70%; width: 25%; height: 50px;">
-                            <div class="gantt-bar-title">Desarrollador Frontend Senior</div>
-                            <div class="gantt-bar-period">2021 - Presente</div>
+
+            <!--
+              GANTT — Rango: 2011–2026 (15 años = 100%)
+              ─────────────────────────────────────────
+              Fórmula de posición:
+                left%  = (año_inicio_decimal − 2011) / 15 × 100
+                width% = duración_años / 15 × 100
+
+              Años decimales: ene=0, feb=0.083, mar=0.167, abr=0.25,
+                              may=0.333, jun=0.417, jul=0.5, ago=0.583,
+                              sep=0.667, oct=0.75, nov=0.833, dic=0.917
+
+              Las barras marcadas data-end="present" reciben su ancho
+              dinámicamente por JS (hasta la fecha actual).
+              Sin línea "Hoy". Sin eje de años.
+            -->
+            <div class="gantt-rows">
+
+                <!-- ── ACTIVIDAD RECIENTE ── -->
+                <div class="gantt-category-label">Actividad reciente</div>
+
+                <!-- Consultor Min. Infraestructura PBA — Ene 2024 → Presente
+                     left = (13.0/15)*100 = 86.67%   data-end=present -->
+                <div class="gantt-row">
+                    <div class="gantt-label">Consultor<small>Min. Infraestructura y SP · PBA</small></div>
+                    <div class="gantt-track">
+                        <div class="gantt-bar bc-infra-pba"
+                            data-start="86.67" data-end="present"
+                            data-title="Consultor"
+                            data-org="Dir. Pcial. de Tecnologías de la Información y Comunicaciones · Min. de Infraestructura y SP - PBA"
+                            data-period="Enero 2024 — Presente"
+                            data-desc="Análisis de datos. Diseño y desarrollo de Tableros de Control de Gestión. ETL. Integrar fuentes de información con herramientas de análisis y visualización. Asistencia técnica y capacitaciones en herramientas de BI.">
+                            2024 — Presente
                         </div>
+                    </div>
+                </div>
+
+                <!-- Jefe de Departamento — Corredores Viales SA — Abr 2022 → Feb 2024
+                     left = (11.25/15)*100 = 75.0%
+                     width = (13.083-11.25)/15*100 = 12.22% -->
+                <div class="gantt-row">
+                    <div class="gantt-label">Jefe de Departamento<small>Corredores Viales SA</small></div>
+                    <div class="gantt-track">
+                        <div class="gantt-bar bc-corr"
+                            style="left:75.0%;width:12.22%"
+                            data-title="Jefe de Departamento"
+                            data-org="Departamento de Sistemas de Gestión de la Información · Corredores Viales SA"
+                            data-period="Abril 2022 — Febrero 2024"
+                            data-desc="Análisis de datos. Desarrollo de informes y tableros BI para el seguimiento y control de gestión de: obras, operaciones, tránsito, recursos humanos, metas y objetivos. Capacitaciones en herramientas de BI.">
+                            2022 — 2024
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analista Sr. Control de Gestión — Min. Obras Públicas — Jul 2021 → Dic 2023
+                     left = (10.5/15)*100 = 70.0%
+                     width = (12.917-10.5)/15*100 = 16.11% -->
+                <div class="gantt-row">
+                    <div class="gantt-label">Analista Sr. de Control de Gestión<small>Min. Obras Públicas · Nación</small></div>
+                    <div class="gantt-track">
+                        <div class="gantt-bar bc-obras-nac"
+                            style="left:70.0%;width:16.11%"
+                            data-title="Analista Sr. de Control de Gestión"
+                            data-org="Dirección de Control de Gestión · Min. de Obras Públicas de la Nación"
+                            data-period="Julio 2021 — Diciembre 2023"
+                            data-desc="Elaboración de informes y tableros de seguimiento de obras públicas: desde la gestión del proyecto, la contratación, el inicio y fin de la obra. El análisis en tableros acompaña la toma de decisiones y la implementación del Sistema de Gestión de Obras del ministerio. Capacitaciones en herramientas de BI.">
+                            2021 — 2023
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── ACTIVIDAD INDEPENDIENTE ── -->
+                <div class="gantt-category-label">Actividad independiente</div>
+
+                <!-- Analista de datos — Independiente — Nov 2020 → Presente
+                     left = (9.833/15)*100 = 65.56%   data-end=present -->
+                <div class="gantt-row">
+                    <div class="gantt-label">Analista de datos<small>Independiente</small></div>
+                    <div class="gantt-track">
+                        <div class="gantt-bar bc-indep"
+                            data-start="65.56" data-end="present"
+                            data-title="Analista de datos"
+                            data-org="Consultor independiente"
+                            data-period="Noviembre 2020 — Presente"
+                            data-desc="Captación y tratamiento de datos, elaboración de indicadores, visualizaciones e informes para la toma de decisiones sobre distintas temáticas: sector público, infraestructura, sector energético, industria, empleo, etc. Capacitaciones en herramientas de BI [Power BI / Looker].">
+                            2020 — Presente
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── SECTOR PÚBLICO 2019–2021 ── -->
+                <div class="gantt-category-label">Sector público · 2019 – 2021</div>
+
+                <!-- Asesor de gabinete — JGM PBA — Nov 2020 → May 2021
+                     left = (9.833/15)*100 = 65.56%
+                     width = (10.333-9.833)/15*100 = 3.33% -->
+                <div class="gantt-row">
+                    <div class="gantt-label">Asesor de gabinete<small>Jefatura de Gabinete · PBA</small></div>
+                    <div class="gantt-track">
+                        <div class="gantt-bar bc-jgm-pba"
+                            style="left:65.56%;width:3.33%"
+                            data-title="Asesor de gabinete"
+                            data-org="Subsecretaría de Coordinación de la Gestión · Jefatura de Gabinete de Ministros PBA"
+                            data-period="Noviembre 2020 — Mayo 2021"
+                            data-desc="Seguimiento y análisis del gasto público provincial. Elaboración de informes y análisis de coyuntura. Capacitaciones en herramientas de BI.">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Asesor — Dir. Coord. Transporte — Ene 2020 → Oct 2020
+                     left = (9.0/15)*100 = 60.0%
+                     width = (9.75-9.0)/15*100 = 5.0% -->
+                <div class="gantt-row">
+                    <div class="gantt-label">Asesor<small>Dir. Coordinación Transporte · PBA</small></div>
+                    <div class="gantt-track">
+                        <div class="gantt-bar bc-infra-pba"
+                            style="left:60.0%;width:5.0%"
+                            data-title="Asesor"
+                            data-org="Dirección de Coordinación del Transporte · Min. de Infraestructura y SP - PBA"
+                            data-period="Enero 2020 — Octubre 2020"
+                            data-desc="Seguimiento del Boleto Especial Educativo. Relevamiento y análisis de información del SUBE, estadísticas educativas oficiales y censos. Diseño y elaboración de reportes.">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Asesor de gabinete — Subsec. Transporte PBA — Jun 2019 → Dic 2019
+                     left = (8.417/15)*100 = 56.11%
+                     width = (8.917-8.417)/15*100 = 3.33% -->
+                <div class="gantt-row">
+                    <div class="gantt-label">Asesor de gabinete<small>Subsec. Transporte · PBA</small></div>
+                    <div class="gantt-track">
+                        <div class="gantt-bar bc-infra-pba"
+                            style="left:56.11%;width:3.33%"
+                            data-title="Asesor de gabinete"
+                            data-org="Subsecretaría de Transporte · Min. de Infraestructura y SP - PBA"
+                            data-period="Junio 2019 — Diciembre 2019"
+                            data-desc="Seguimiento y control de gestión del Boleto Especial Educativo. Relevamiento del SUBE, estadísticas educativas y censos. Diseño de reportes. Coordinación entre áreas intervinientes.">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── JEFATURA DE GABINETE · NACIÓN ── -->
+                <div class="gantt-category-label">Jefatura de Gabinete de Ministros · Nación</div>
+
+                <!-- Coordinador de Análisis Sectorial — Sep 2017 → May 2019
+                     left = (6.667/15)*100 = 44.44%
+                     width = (8.333-6.667)/15*100 = 11.11% -->
+                <div class="gantt-row">
+                    <div class="gantt-label">Coordinador de Análisis Sectorial<small>Jefatura de Gabinete · Nación</small></div>
+                    <div class="gantt-track">
+                        <div class="gantt-bar bc-jgm-nac"
+                            style="left:44.44%;width:11.11%"
+                            data-title="Coordinador de Análisis Sectorial"
+                            data-org="Dirección Nacional de Coordinación del Presupuesto Nacional · Jefatura de Gabinete de Ministros de la Nación"
+                            data-period="Septiembre 2017 — Mayo 2019"
+                            data-desc="Análisis sobre la situación financiera de los organismos o programas en la categoría 'Gobierno, Fuerzas Armadas y de Seguridad'. Diseño y elaboración de informes periódicos.">
+                            2017 — 2019
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Asesor Sr. en Presupuesto Público — May 2016 → Ago 2017
+                     left = (5.333/15)*100 = 35.56%
+                     width = (6.583-5.333)/15*100 = 8.33% -->
+                <div class="gantt-row">
+                    <div class="gantt-label">Asesor Sr. en Presupuesto Público<small>Jefatura de Gabinete · Nación</small></div>
+                    <div class="gantt-track">
+                        <div class="gantt-bar bc-jgm-nac"
+                            style="left:35.56%;width:8.33%"
+                            data-title="Asesor Sr. en Presupuesto Público"
+                            data-org="Dirección Nacional de Evaluación Presupuestaria · Jefatura de Gabinete de Ministros de la Nación"
+                            data-period="Mayo 2016 — Agosto 2017"
+                            data-desc="Análisis de Presupuesto Público. Diseño y elaboración de informes periódicos sobre la situación financiera de programas y organismos de la Administración Pública Nacional.">
+                            2016 — 2017
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Asesor en Presupuesto Público — Oct 2013 → Abr 2016
+                     left = (2.75/15)*100 = 18.33%
+                     width = (5.25-2.75)/15*100 = 16.67% -->
+                <div class="gantt-row">
+                    <div class="gantt-label">Asesor en Presupuesto Público<small>Jefatura de Gabinete · Nación</small></div>
+                    <div class="gantt-track">
+                        <div class="gantt-bar bc-jgm-nac"
+                            style="left:18.33%;width:16.67%"
+                            data-title="Asesor en Presupuesto Público"
+                            data-org="Dirección Nacional de Evaluación Presupuestaria · Jefatura de Gabinete de Ministros de la Nación"
+                            data-period="Octubre 2013 — Abril 2016"
+                            data-desc="Análisis de Presupuesto Público. Relevamiento y análisis de información del SIDIF. Seguimiento de la ejecución presupuestaria, avance de proyectos, percepción de ingresos.">
+                            2013 — 2016
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── INICIOS ── -->
+                <div class="gantt-category-label">Inicios</div>
+
+                <!-- Consultor — JGM PBA — Ago 2011 → Mar 2012
+                     left = (0.583/15)*100 = 3.89%
+                     width = (1.167-0.583)/15*100 = 3.89% -->
+                <div class="gantt-row">
+                    <div class="gantt-label">Consultor<small>Jefatura de Gabinete · PBA</small></div>
+                    <div class="gantt-track">
+                        <div class="gantt-bar bc-jgm-pba"
+                            style="left:3.89%;width:3.89%"
+                            data-title="Consultor"
+                            data-org="Dirección Provincial de Seguimiento y Control Presupuestario · Jefatura de Gabinete de Ministros PBA"
+                            data-period="Agosto 2011 — Marzo 2012"
+                            data-desc="Elaboración de informes periódicos sobre la situación financiera de los organismos de la Provincia de Buenos Aires.">
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /gantt-rows -->
+        </div><!-- /gantt-wrapper -->
+    </div>
+</section>
+
+<!-- Tooltip global -->
+<div class="gantt-tooltip" id="ganttTooltip"></div>
+
+<!-- ── FORMACIÓN ── -->
+<section id="formacion" class="education">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="icon-circle"><i class="fas fa-graduation-cap"></i></div>
+            <h2>Formación</h2>
+        </div>
+        <div class="formacion-cols">
+
+            <!-- Timeline vertical con 5 títulos reales (año de finalización o estado) -->
+            <div class="vtimeline">
+
+                <!-- Licenciatura en Economía — finalizada 2012 -->
+                <div class="vtimeline-item reveal">
+                    <div class="vtimeline-dot"></div>
+                    <div class="vtimeline-card">
+                        <div class="vtimeline-year">2012</div>
+                        <div class="vtimeline-title">Licenciatura en Economía</div>
+                        <div class="vtimeline-inst">Universidad Nacional de La Plata</div>
+                        <span class="edu-badge">Finalizado</span>
+                    </div>
+                </div>
+
+                <!-- Maestría en Finanzas Públicas — Tesis pendiente -->
+                <div class="vtimeline-item reveal reveal-delay-1">
+                    <div class="vtimeline-dot"></div>
+                    <div class="vtimeline-card">
+                        <div class="vtimeline-year">2013</div>
+                        <div class="vtimeline-title">Maestría en Finanzas Públicas Provinciales y Municipales</div>
+                        <div class="vtimeline-inst">Universidad Nacional de La Plata</div>
+                        <span class="edu-badge pendiente">Tesis pendiente</span>
+                    </div>
+                </div>
+
+                <!-- Diplomatura Evaluación de Políticas Públicas — finalizada 2014 -->
+                <div class="vtimeline-item reveal reveal-delay-2">
+                    <div class="vtimeline-dot"></div>
+                    <div class="vtimeline-card">
+                        <div class="vtimeline-year">2014</div>
+                        <div class="vtimeline-title">Diplomatura en Estudios Avanzados en Evaluación de Políticas Públicas</div>
+                        <div class="vtimeline-inst">Universidad Nacional de San Martín</div>
+                        <span class="edu-badge">Finalizado</span>
+                    </div>
+                </div>
+
+                <!-- Maestría en Políticas de Desarrollo — Tesis pendiente -->
+                <div class="vtimeline-item reveal reveal-delay-3">
+                    <div class="vtimeline-dot"></div>
+                    <div class="vtimeline-card">
+                        <div class="vtimeline-year">2020 · Cohorte 2020</div>
+                        <div class="vtimeline-title">Maestría en Políticas de Desarrollo</div>
+                        <div class="vtimeline-inst">Universidad Nacional de La Plata</div>
+                        <span class="edu-badge pendiente">Tesis pendiente</span>
+                    </div>
+                </div>
+
+                <!-- Diplomatura Cambio Climático — finalizada 2021 -->
+                <div class="vtimeline-item reveal">
+                    <div class="vtimeline-dot"></div>
+                    <div class="vtimeline-card">
+                        <div class="vtimeline-year">2021</div>
+                        <div class="vtimeline-title">Diplomatura "Bases y Herramientas para la Gestión Integral del Cambio Climático"</div>
+                        <div class="vtimeline-inst">Universidad Nacional de Quilmes / Universidad Nacional de Jujuy</div>
+                        <span class="edu-badge">Finalizado</span>
+                    </div>
+                </div>
+
+            </div><!-- /vtimeline -->
+
+            <!-- Panel de cursos y capacitaciones -->
+            <div class="cursos-panel reveal reveal-delay-1">
+                <div class="cursos-panel-title"><i class="fa-solid fa-book"></i> Cursos y Capacitaciones</div>
+                <div class="cursos-chips">
+                    <span class="curso-chip">Técnicas de Análisis de Datos del Transporte</span>
+                    <span class="curso-chip">Datos Abiertos Gubernamentales</span>
+                    <span class="curso-chip">Business Intelligence</span>
+                    <span class="curso-chip">Evaluación de Políticas Públicas</span>
+                    <span class="curso-chip">Presupuesto Público</span>
+                    <span class="curso-chip">Administración Financiera del Sector Público</span>
+                    <span class="curso-chip">Medición de Impacto</span>
+                    <span class="curso-chip">Matemática Financiera</span>
+                    <span class="curso-chip">Globalización, Integración y Mercosur</span>
+                    <span class="curso-chip">Energías Renovables</span>
+                    <span class="curso-chip">Python</span>
+                    <span class="curso-chip">SQL</span>
+                    <span class="curso-chip">HTML · CSS</span>
+                    <span class="curso-chip">Figma</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ── DOCENCIA & OTRAS ACTIVIDADES ── -->
+<section id="docencia" class="docencia">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="icon-circle"><i class="fa-solid fa-user-plus"></i></div>
+            <h2>Docencia & Otras Actividades</h2>
+        </div>
+        <div class="docencia-cols">
+
+            <!-- Panel de docencia (oscuro) -->
+            <div class="doc-panel reveal">
+                <div class="doc-panel-title"><i class="fas fa-chalkboard-teacher"></i> Docencia</div>
+
+                <div class="doc-item">
+                    <div class="doc-item-name">
+                        Análisis de Datos con Power BI para la Gestión de Infraestructura
+                        <small>IPAP — Instituto Provincial de Administración Pública</small>
+                    </div>
+                    <div class="doc-item-period">2025 — 2026</div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-item-name">
+                        Finanzas Públicas
+                        <small>Universidad del Este</small>
+                    </div>
+                    <div class="doc-item-period">2019 — 2022</div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-item-name">
+                        Comercio y Negocios Internacionales
+                        <small>Universidad del Este</small>
+                    </div>
+                    <div class="doc-item-period">2020</div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-item-name">
+                        Economía Internacional
+                        <small>Universidad Católica de La Plata</small>
+                    </div>
+                    <div class="doc-item-period">2014 — 2015</div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-item-name">
+                        Matemáticas · Nivel Secundario
+                        <small>Colegios públicos</small>
+                    </div>
+                    <div class="doc-item-period">2012 — 2013</div>
+                </div>
+                <div class="doc-item">
+                    <div class="doc-item-name">
+                        Elementos de Microeconomía y Macroeconomía · Nivel Secundario
+                        <small>Colegios públicos</small>
+                    </div>
+                    <div class="doc-item-period">2012 — 2013</div>
+                </div>
+            </div>
+
+            <!-- Paneles de otras actividades (claro) -->
+            <div class="otros-stack reveal reveal-delay-1">
+
+                <div class="otros-panel">
+                    <div class="otros-panel-title"><i class="fa-solid fa-magnifying-glass-chart"></i>Investigación & Extensión universitaria</div>
+                    <div class="otro-item">
+                        <div class="otro-dot"></div>
+                        <div class="otro-text">
+                            Observatorio de Relaciones Económicas Internacionales — UNLP
+                            <span>Integrante · 2012</span>
+                        </div>
+                    </div>
+                    <div class="otro-item">
+                        <div class="otro-dot"></div>
+                        <div class="otro-text">
+                            Cultura Política y Medios de Comunicación en la Región del Gran La Plata — UNLP
+                            <span>Colaborador · 2012 – 2013</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="otros-panel">
+                    <div class="otros-panel-title"><i class="fas fa-water"></i> Otras actividades</div>
+                    <div class="otro-item">
                         
-                        <!-- Experiencia 2 -->
-                        <div class="gantt-bar gantt-bar-1" style="top: 35%; left: 50%; width: 20%; height: 50px;">
-                            <div class="gantt-bar-title">Desarrollador Frontend</div>
-                            <div class="gantt-bar-period">2019 - 2021</div>
-                        </div>
+                        <div class="otro-text"><i class="fa-solid fa-life-ring"></i>&nbsp;&nbsp;Guardavidas<span>2023 — 2024</span></div>
+                    </div>
+                    <div class="otro-item">
                         
-                        <!-- Experiencia 3 -->
-                        <div class="gantt-bar gantt-bar-2" style="top: 55%; left: 30%; width: 20%; height: 50px;">
-                            <div class="gantt-bar-title">Desarrollador Web Junior</div>
-                            <div class="gantt-bar-period">2017 - 2019</div>
-                        </div>
+                        <div class="otro-text"><i class="fa-solid fa-person-swimming"></i>&nbsp;&nbsp;Instructor de Natación<span>2025</span></div>
+                    </div>
+                    <div class="otro-item">
                         
-                        <!-- Experiencia 4 -->
-                        <div class="gantt-bar gantt-bar-3" style="top: 75%; left: 15%; width: 15%; height: 50px;">
-                            <div class="gantt-bar-title">Practicante de Desarrollo</div>
-                            <div class="gantt-bar-period">2015 - 2017</div>
+                        <div class="otro-text"><i class="fa-solid fa-kit-medical"></i>&nbsp;&nbsp;Instructor de RCP y Primeros Auxilios<span>2025</span></div>
+                    </div>
+                    <div class="otro-item">
+                        
+                        <div class="otro-text">
+                            <i class="fas fa-chalkboard-teacher"></i>&nbsp;<i class="fa-solid fa-life-ring"></i>&nbsp;&nbsp;Colaborador en Escuela de Guardavidas <br>[SUGARA La Plata]
+                            <span>2024 — Actualidad</span>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Formación - Línea de tiempo horizontal -->
-    <section id="formacion" class="education">
-        <div class="container">
-            <div class="section-title">
-                <h2>Formación Académica</h2>
             </div>
-            
-            <div class="horizontal-timeline">
-                <div class="timeline-line"></div>
-                
-                <div class="timeline-items">
-                    <!-- Formación 1 -->
-                    <div class="timeline-item" style="left: 10%;">
-                        <div class="timeline-point"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-date">2022</span>
-                            <h3 class="timeline-title">Máster en Desarrollo Web</h3>
-                            <p class="timeline-desc">Universidad Tecnológica</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Formación 2 -->
-                    <div class="timeline-item" style="left: 30%;">
-                        <div class="timeline-point"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-date">2020</span>
-                            <h3 class="timeline-title">Curso Avanzado de React</h3>
-                            <p class="timeline-desc">Plataforma de Educación Online</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Formación 3 -->
-                    <div class="timeline-item" style="left: 50%;">
-                        <div class="timeline-point"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-date">2018</span>
-                            <h3 class="timeline-title">Grado en Ingeniería Informática</h3>
-                            <p class="timeline-desc">Universidad Central</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Formación 4 -->
-                    <div class="timeline-item" style="left: 70%;">
-                        <div class="timeline-point"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-date">2016</span>
-                            <h3 class="timeline-title">Certificación en UX/UI Design</h3>
-                            <p class="timeline-desc">Instituto de Diseño Digital</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Formación 5 -->
-                    <div class="timeline-item" style="left: 90%;">
-                        <div class="timeline-point"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-date">2014</span>
-                            <h3 class="timeline-title">Bachillerato Tecnológico</h3>
-                            <p class="timeline-desc">Instituto de Educación Secundaria</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Habilidades -->
-    <section id="habilidades" class="skills">
-        <div class="container">
-            <div class="section-title">
-                <h2>Mis Habilidades</h2>
-            </div>
-            <div class="skills-container">
-                <div class="skill-category">
-                    <h3>Técnicas</h3>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>React</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>JavaScript</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>HTML/CSS</span>
-                            <span>95%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 95%;"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Blandas</h3>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>Comunicación</span>
-                            <span>95%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 95%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>Trabajo en equipo</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>Resolución de problemas</span>
-                            <span>88%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 88%;"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Idiomas</h3>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>Español</span>
-                            <span>Nativo</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 100%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>Inglés</span>
-                            <span>Avanzado</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 80%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>Francés</span>
-                            <span>Intermedio</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 60%;"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Proyectos -->
-    <section id="proyectos" class="projects">
-        <div class="container">
-            <div class="section-title">
-                <h2>Proyectos Destacados</h2>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-img" style="background-color: #3498db;"></div>
-                    <div class="project-info">
-                        <h3>E-commerce Platform</h3>
-                        <p>Plataforma de comercio electrónico con React y Node.js.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">React</span>
-                            <span class="project-tag">Node.js</span>
-                            <span class="project-tag">MongoDB</span>
-                        </div>
-                        <a href="#" class="btn btn-outline">Ver Detalles</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-img" style="background-color: #e74c3c;"></div>
-                    <div class="project-info">
-                        <h3>App de Gestión de Tareas</h3>
-                        <p>Aplicación para gestión de proyectos con funcionalidades colaborativas.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Vue.js</span>
-                            <span class="project-tag">Firebase</span>
-                            <span class="project-tag">CSS</span>
-                        </div>
-                        <a href="#" class="btn btn-outline">Ver Detalles</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-img" style="background-color: #2ecc71;"></div>
-                    <div class="project-info">
-                        <h3>Portal de Noticias</h3>
-                        <p>Portal de noticias responsive con panel de administración.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">HTML/CSS</span>
-                            <span class="project-tag">JavaScript</span>
-                            <span class="project-tag">PHP</span>
-                        </div>
-                        <a href="#" class="btn btn-outline">Ver Detalles</a>
-                    </div>
-                </div>
-            </div>
+<!-- ── CONTACTO ── -->
+<section id="contacto" class="contact">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="icon-circle"><i class="fas fa-paper-plane"></i></div>
+            <h2>Contacto</h2>
         </div>
-    </section>
-
-    <!-- Contacto -->
-    <section id="contacto" class="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Contacto</h2>
-            </div>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>¡Hablemos!</h3>
-                    <div class="contact-details">
-                        <p>Estoy abierto/a a nuevas oportunidades y proyectos interesantes.</p>
-                        <p><strong>Email:</strong> tu.email@ejemplo.com</p>
-                        <p><strong>Teléfono:</strong> +34 123 456 789</p>
-                        <p><strong>Ubicación:</strong> Ciudad, País</p>
-                    </div>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
+        <div class="contact-grid">
+            <div class="contact-info reveal">
+                <h3>Información de Contacto</h3>
+                <div class="contact-item">
+                    <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+                    <div><a href="mailto:steciowulises@gmail.com">steciowulises@gmail.com</a></div>
                 </div>
-                <div class="contact-form">
-                    <form>
+                <div class="contact-item">
+                    <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
+                    <div>+54 9 221 607 5324</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>MB Gonnet CP 1897, Argentina</div>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/steciowulises/" target="_blank" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="mailto:steciowulises@gmail.com" class="social-link" title="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="contact-form reveal reveal-delay-1">
+                <h3>Envíame un Mensaje</h3>
+                <form action="mailto:steciowulises@gmail.com" method="post" enctype="text/plain">
+                    <div class="form-row">
                         <div class="form-group">
-                            <label for="name">Nombre</label>
-                            <input type="text" id="name" class="form-control" required>
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" name="Nombre" placeholder="Tu nombre" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" class="form-control" required>
+                            <input type="email" id="email" name="Email" placeholder="tu@email.com" required>
                         </div>
-                        <div class="form-group">
-                            <label for="subject">Asunto</label>
-                            <input type="text" id="subject" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Mensaje</label>
-                            <textarea id="message" class="form-control" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Enviar Mensaje</button>
-                    </form>
-                </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="Mensaje" placeholder="Escribí tu mensaje aquí..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Enviar</button>
+                </form>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <a href="#inicio" class="btn btn-outline back-to-top">Volver Arriba</a>
-                <p class="copyright">© 2023 Tu Nombre. Todos los derechos reservados.</p>
+<!-- ── FOOTER ── -->
+<footer>
+    <p>© 2026 <span>Ulises Steciow</span>. Todos los derechos reservados.</p>
+</footer>
+
+<!-- ── SCRIPTS ── -->
+<script>
+    // Menú hamburguesa
+    const toggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    // Reveal al hacer scroll
+    const revealObs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    // Nav activo al scrollear
+    const sections = document.querySelectorAll('section[id]');
+    const navItems = document.querySelectorAll('.nav-links a');
+    const secObs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                navItems.forEach(i => i.classList.remove('active'));
+                const a = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+                if (a) a.classList.add('active');
+            }
+        });
+    }, { threshold: 0.4 });
+    sections.forEach(s => secObs.observe(s));
+
+    // ── GANTT ──────────────────────────────────────────────────────
+    // Rango: 2011–2026 (15 años). Sin eje de años. Sin línea "Hoy".
+    // Las barras con data-end="present" reciben su ancho dinámicamente.
+
+    const GANTT_START = 2011;
+    const GANTT_RANGE = 15; // 2026 - 2011
+
+    // Calcular fracción decimal del año actual
+    const now       = new Date();
+    const todayFrac = now.getFullYear() + now.getMonth() / 12;
+    const todayPct  = (todayFrac - GANTT_START) / GANTT_RANGE * 100;
+
+    // Ajustar ancho de barras "Presente"
+    document.querySelectorAll('.gantt-bar[data-end="present"]').forEach(bar => {
+        const startPct = parseFloat(bar.dataset.start);
+        bar.style.left  = startPct + '%';
+        bar.style.width = Math.max(0.5, todayPct - startPct) + '%';
+    });
+
+    // Tooltip interactivo
+    const tooltip = document.getElementById('ganttTooltip');
+    document.querySelectorAll('.gantt-bar').forEach(bar => {
+        bar.addEventListener('mouseenter', () => {
+            tooltip.innerHTML =
+                `<strong>${bar.dataset.title}</strong>` +
+                `${bar.dataset.org}<br>` +
+                `<em>${bar.dataset.period}</em><br><br>` +
+                bar.dataset.desc;
+            tooltip.classList.add('visible');
+        });
+        bar.addEventListener('mousemove', e => {
+            let x = e.clientX + 16, y = e.clientY + 16;
+            const tw = tooltip.offsetWidth, th = tooltip.offsetHeight;
+            if (x + tw > window.innerWidth  - 16) x = e.clientX - tw - 16;
+            if (y + th > window.innerHeight - 16) y = e.clientY - th - 16;
+            tooltip.style.left = x + 'px';
+            tooltip.style.top  = y + 'px';
+        });
+        bar.addEventListener('mouseleave', () => tooltip.classList.remove('visible'));
+    });
+</script>
+
+</body>
+</html>
